@@ -1,0 +1,126 @@
+{{extend './base.html'}}
+{{block 'title'}}这里是{{n_Nickname}}的私人空间{{/block}}
+{{block 'head'}}
+<style>
+	.main{
+		margin-top: 100px;
+	}
+	.box{
+		height: 300px;
+		width: 500px;
+		border-radius: 5px;
+		background-color: white;
+		box-sizing: border-box;
+		box-shadow: 0 0 10px 0 #eeeeee;
+		margin: 0 auto;
+		position: relative;
+	}
+	.box_s{
+		text-align: center;
+	}
+	.pwd_button{
+		height: 30px;
+		width: 250px;
+		padding: 0 15px;
+		text-align: center;
+		font-size: 18px;
+		background-color: #f7f7f7;
+		border: none;
+		border-radius: 15px;
+		margin-top: 80px;
+		outline-style: none;
+		line-height: 30px;
+		border: 1.5px solid white;
+		transition: border 0.5s;
+	}
+	.pwd_button:focus{
+		border: 1.5px solid #4090ff;
+	}
+	.box_s .next{
+		margin-top: 90px;
+		color: #999;
+		width: 450px;
+		text-align: right;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.box_s .next:hover{
+		color: #4090ff;
+	}
+	.box_s .success{
+		margin-top: 90px;
+		color: #999;
+		width: 450px;
+		text-align: right;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.box_s .success:hover{
+		color: #4090ff;
+	}
+	.nickname{
+		text-align: center;
+		color: #4090ff;
+		font-size: 20px;
+		padding-top: 20px;
+	}
+	.box_new{
+		position: absolute;
+		top: 0;
+		width: 500px;
+		display: none;
+	}
+</style>
+{{/block}}
+{{block 'body'}}
+<div class="main">
+	<div class="box">
+		<div class="box_old box_s">
+			<p class="nickname">{{user_Nickname}}</p>
+			<input type="password" class="old_pwd pwd_button" placeholder="请输入您的旧密码">
+			<p class="next">下一步</p>
+		</div>
+		<div class="box_new box_s">
+			<p class="nickname">{{user_Nickname}}</p>
+			<input type="password" class="new_pwd pwd_button" placeholder="请输入您的新密码">
+			<p class="success">保存</p>
+		</div>
+	</div>
+</div>
+{{/block}}
+{{block 'script'}}
+<script>
+	$('.next').on('click',function (res) {
+		$.post('/oldPwd',{user_Pwd: $('.old_pwd').val()},function (res) {
+			if (res === 'success') {
+				$('.box_old').animate({
+					width: 0,
+					opacity: 0
+				},300)
+				$('.box_new').fadeIn(300)
+			} else {
+				alert('请输入正确的原密码')
+			}
+		})
+	})
+	$('.success').on('click',function () {
+		if ($('.new_pwd').val()) {
+			$.post('/newPwd',{user_Pwd: $('.new_pwd').val()},function (res) {
+				if (res === 'success'){
+					alert('修改密码成功')
+					window.location.href ='/'
+				} else {
+					alert('修改密码失败')
+				}
+			})
+		} else {
+			alert('密码不能为空')
+		}
+		
+	})
+</script>
+{{/block}}
+
+
+
+

@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/public/css/personalZoneCss/editor.css">
+<div style="background-color: rgba(255,255,255,0.7);box-shadow: 0 5px 10px -2px #eeeeee;position: relative;">
+	<div id="ed1" class="toolbar">
+	</div>
+	<div class="ontools"></div>
+</div>
+<div class="main">
+	<div class="title_box">
+		<input type="text" class="title" autofocus placeholder="请在此添加标题">
+		<div id="submit">发布</div>
+	</div>
+	<div id="ed2" class="text"> <!--可使用 min-height 实现编辑区域自动增加高度-->
+	</div>
+</div>
+    <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="/public/js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#ed1','#ed2')
+    // 或者 var editor = new E( document.getElementById('editor') )
+	editor.customConfig.onfocus = function () {
+        $('#ed2').css({
+			border: '1.5px solid #90ccff',
+			borderRadius: '3px'
+		})
+		$('.ontools').css('display','none')
+    }
+	 editor.customConfig.onblur = function (html) {
+        $('#ed2').css({
+			border: '1px solid #ddd'
+		})
+		$('.ontools').css('display','block')
+    }
+    editor.create()
+	$('#submit').on('click',function () {
+		if (!$('.title').val()) {
+				console.log($('.title').val())
+				alert('请输入文章标题')
+				return
+			}
+		if (!editor.txt.html()||editor.txt.html() === '<p><br></p>'){
+			alert('请输入文章内容')
+			return 
+		}
+		var n_Title = $('.title').val().replace(/'/g,'\'\'')
+		var n_Content = editor.txt.html().replace(/'/g,'\'\'')
+		$.post('/Seditor',{n_Title: n_Title,n_Content: `${n_Content}`},function (res) {
+			if((res === 'success')){
+				alert('发布成功')
+				window.location.href = '/'
+			} else {
+				alert('发布失败')
+			}
+		})
+	})
+</script>
+
+
+
+
+
+

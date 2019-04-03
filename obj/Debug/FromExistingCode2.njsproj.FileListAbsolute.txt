@@ -1,0 +1,3 @@
+C:\Users\王煜辉\Desktop\www\obj\Debug\FromExistingCode2.njsprojAssemblyReference.cache
+C:\Users\王煜辉\Desktop\www\obj\Debug\FromExistingCode2.njsproj.CoreCompileInputs.cache
+C:\Users\王煜辉\Desktop\www\bin\Microsoft.NodejsTools.WebRole.dll

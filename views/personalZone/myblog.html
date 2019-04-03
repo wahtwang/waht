@@ -1,0 +1,231 @@
+﻿{{extend './base.html'}}
+{{block 'title'}}这里是{{n_Nickname}}的私人空间{{/block}}
+{{block 'head'}}
+<link rel="stylesheet" href="/public/css/personalZoneCss/myblog.css">
+{{/block}}
+{{block 'body'}}
+<div class="returnTOP"><i class="iconfont" style="display: none;">&#xec0b;</i></div><!--返回头部-->
+<div class="scroll_bar"><!--自制滚动条-->
+	<div class="scroll_point"></div>
+</div>
+<div class="user_background content">
+	<div class="container">
+		<div class="user_background_box box" style="background: url(/public/images/user_background/{{user.user_background}}) no-repeat center center">
+			<div class="user_backgroun_head_box">
+				<img src="/public/images/user_photo_head/{{user.user_Portrait}}" alt="头像">
+				<p>{{user.user_Nickname}}</p>
+				<p class="signature">{{user.user_signature}}</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="bar content">
+	<div class="container">
+		<div class="box">
+			<ul>
+				<a href="/mb"><li>我的主页</li></a>
+				<a href="/ud"><li>个人资料</li></a>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="dmask">
+	<div class="box">
+		<p>你真的要把我删掉吗?😭</p>
+		<div class="dbutton_box">
+			<div class="dbutton">确定</div>
+			<div class="sbutton">取消</div>
+		</div>
+	</div>
+</div>
+<div class="main content">
+	<div class="container">
+		<div class="main_left">
+			<div class="box left_bar1">
+				
+			</div>
+		</div>
+		<div class="main_rignt">
+			<div class="box middle_bar">
+				<ul>
+					<li class="time_line">时间顺叙</li>
+				</ul>
+			</div>
+			<div class="notes">
+				{{each notes val i}}
+			<div class="box note" n_Id="{{val.n_Id}}">
+				<div class="cha">×</div>
+				<div class="myPoint">
+					<div class="myPointBox">
+						<div class="author">
+							<div class="head" style="background: url(/public/images/user_photo_head/{{user.user_Portrait}});background-size: cover;">
+							</div>
+							<ul>
+								<li>{{user.user_Nickname}}</li>
+								<li class="user_signature">{{user.user_signature}}</li>
+							</ul>
+							<div class="detailed"><span>查看全文 </span></div>
+						</div>
+						<div class="note_content">
+							<div class="n_Title">{{val.n_Title}}</div>
+							<div class="n_Content">{{#val.n_Content}}</div>
+							<div class="n_date"><span>{{val.n_date}}</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{/each}}
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!--开始完整文章内容制作-->
+<div class="mask">
+	<div class="container">
+		<div class="box">
+			<div class="mask_content">
+			</div>
+		</div>
+	</div>
+</div>
+{{/block}}
+{{block 'script'}}
+<script>
+	$('.main_rignt').on('click','.detailed',function () {
+		$('.mask_content').empty().append($(this).parents('.note').find('.note_content').html())
+		$('.mask').slideDown(300)
+		$('.top_bar').addClass('top_bar_b')
+	})
+	$('.mask').on('click',function () {
+		$(this).slideUp(300)
+		$('.top_bar').removeClass('top_bar_b')
+	})
+	$('.mask .box').on('click',function (e) {
+		e.stopPropagation()
+	})
+	;(function () {
+		var dHeight = $(document).height()
+		var keepScroll = 0
+		var $scrollBar=$(".scroll_bar")
+		var $scrollPoint= $(".scroll_point")
+		var barTop
+		var $html = $("html")
+		$scrollBar.get(0).onselectstart = function(){return false}
+		$(window).scroll(function(){
+			dHeight = $(document).height()
+			$scrollPoint.css("top",window.pageYOffset/(dHeight-$(window).height())*400)
+		})
+		var getMousePosition = function (e) {
+			var mouseY = e.clientY
+			return mouseY
+		}
+		var changePointPosition = function (mouseY,barTop) {
+			var mouseRTop = mouseY-barTop
+			if(mouseRTop>=15&&mouseRTop<=415){
+				$scrollPoint.css("top",mouseRTop-15)//pointTop
+				return mouseRTop-15
+			}
+			else if (mouseRTop<15) {
+				$scrollPoint.css("top",0)
+				return 0
+			}
+			else{
+				$scrollPoint.css("top",400)
+				return 400
+			}
+		}
+		$scrollBar.on("mousedown",function (e) {
+			var mouseY = getMousePosition(e)
+			barTop = parseInt($scrollBar.css("top"))
+			var pointTop = changePointPosition(mouseY,barTop)
+			keepScroll = 1
+			$html.scrollTop((dHeight-$(window).height())/400*pointTop)
+		})
+		$html.on("mousemove",function (e) {
+			if(keepScroll===1){
+				var mouseY = getMousePosition(e)
+				var pointTop = changePointPosition(mouseY,barTop)
+				$html.scrollTop((dHeight-$(window).height())/400*pointTop)
+			}
+		})
+		$html.on("mouseup",function () {
+			keepScroll = 0
+		})
+	})()
+	;(function () {
+		var $notes = $('.note')
+		var keep = 0
+		$('.time_line').on('click',function () {
+			if($(this).text() === '时间顺叙'){
+				$(this).text('时间倒叙')
+			} else {
+				$(this).text('时间顺叙')
+			}
+			$('.notes').fadeOut(400,function () {
+				console.log(1)
+				$('.notes').empty()
+				if(keep ===0 ){
+					for(i=$notes.length-1;i>0;i--){
+						$('.notes').append($notes.eq(i)).css('display','none').fadeIn(400)
+					}
+					keep = 1
+				} else {
+					for(i=0;i<$notes.length;i++){
+						$('.notes').append($notes.eq(i)).css('display','none').fadeIn(400)
+					}
+					keep = 0
+				}
+			})
+			
+		})
+	})()
+	/*返回顶部*/
+	;(function (){
+		var $returnTop = $(".returnTOP i")
+	$(window).scroll(function(){
+		if($(this).scrollTop()>600){
+		$returnTop.show()
+	}
+		else{
+		$returnTop.hide()
+	}
+	})
+	$returnTop.click(function(){
+		$("html").animate({scrollTop:0})
+	})
+	function toWhite(){
+		$returnTop.stop().animate({opacity:1},1500,"linear",function(){toBlue()})
+	}
+	function toBlue(){
+		$returnTop.stop().animate({opacity:0},1500,"linear",function(){toWhite()})
+	}
+	toWhite()
+	})()
+	;(function () {
+		var $this
+		$('.cha').on('click',function () {
+			$('.dmask').fadeIn(200)
+			$this = $(this)
+		})
+		$('.dbutton').on('click',function (e) {
+			e.stopPropagation()
+			var n_Id = $this.parent().attr('n_Id')
+			$.get('/deleteNote',{n_Id: n_Id},function (res) {
+				if (res === 'success') {
+					$('.dmask').fadeOut(200)
+					$this.parent().slideUp(400)
+				}
+			})
+		})
+		$('.sbutton').on('click',function () {
+			$('.dmask').fadeOut(200)
+		})
+	})()
+</script>
+{{/block}}
+
+
+
+
+

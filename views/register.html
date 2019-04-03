@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta name="wangyuhui" content="603225315@qq.com"> 
+	<meta charset="UTF-8">
+	<meta name="DESCRIPTION" CONTENT="从知识中读取生活">
+	<link rel="stylesheet" href="/public/css/normalize.css" type="text/css">
+	<link rel="shortcut icon" href="/public/images/favicon.ico" type="images/x-icon">
+	<meta name="keywords" CONTENT="微博,贴吧,青年,技术,生活,">
+	<title>WAHT</title>
+	<script src="/public/js/login.js"></script>
+	<script src="/public/js/signin.js"></script>
+	<script src="/public/js/jquery-1.12.4.min.js"></script>
+	<style>
+		html,body{
+			height: 100%;
+			overflow: hidden;/*body与html的大小对齐浏览器大小,超出部分裁剪掉,防止有滚动条产生*/
+			font-family: "microsoft yahei";/*设置全局字体*/
+		}
+		div,dl,dt,dd,ul,ol,li,form,input,p,body{
+			padding: 0;
+			margin: 0;/*所有元素内外边距设为0*/
+		}
+		body{/*设置body背景*/
+			background:url(/public/images/login_bg.jpg) no-repeat center center;
+			background-size: cover;
+		}
+		li{
+			list-style: none;
+		}
+		/*设置登陆主内容大盒子==============================*/
+		.main{
+			position: absolute;
+			height: 550px;
+			width: 100%;
+			top: 14%;
+			/*background-color: antiquewhite;*/
+		}
+		/*登陆主内容定位盒子*/
+		.login{
+			height: inherit;
+			width: 900px;
+			margin: 0 auto;
+			/*background-color: aqua;*/
+		}
+		/*登陆主内容阴影盒子*/
+		.login_v_m{
+			height: inherit;
+			width: inherit;
+			border-radius: 12px;
+			box-shadow: 0 0 100px -20px #495157;
+		}
+		/*登陆主内容左边图可视盒子*/
+		.login_v_s{
+			height: inherit;
+			width: 50%;
+		}
+		.login_left{
+			float: left;
+			border-radius: 12px 0 0 12px;
+			background-color:rgba(170,231,236,0.8);
+			overflow: hidden;
+		}
+		.login_png{/*logo等图层*/
+			position: absolute;
+			display: inline-block;
+			top:-125px;
+			height: 800px;
+		}
+		.login_png_{/*具体图*/
+			position: absolute;
+			height: inherit;
+			width: 450px;
+			display:none;
+		}
+		.login_point{/*圆点层*/
+			position: absolute;
+			bottom: 50px;
+			height: 20px;
+			width: 450px;
+			/*background-color: aqua;*/
+			z-index: 999;
+			text-align: center;
+			cursor:pointer;
+		}
+		.login_point_m{
+			display: inline-block;
+			height: inherit;
+			/*background-color: aquamarine;*/
+		}
+		.login_point_m li{/*圆点*/
+			float: left;
+			height: 10px;
+			width: 10px;
+			border: 5px solid rgba(255,255,255,0.4);
+			background: rgba(100,100,255,1.00) padding-box;
+			border-radius: 50%;
+			transition: all 0.3s;
+			margin-right: 5px;
+		}
+		#login_point_m_h{
+			height: 4px;
+			width: 4px;
+			border: 8px solid rgba(80,80,255,1);
+			background: rgba(255,255,255,0.2) padding-box;
+		}
+		/*登陆主内容右边表单元素可视盒子*/
+		.login_right{/*右边大盒子*/
+			float: right;
+			border-radius: 0 12px 12px 0;
+			width: 450px;
+			height: inherit;
+		}
+		.login_v_s_1{/*背景盒子*/
+			position: absolute;
+			background-color:rgba(255,255,255,0.95);
+			background-image: url(/public/images/index_vecporgraph.png);
+		}
+		.login_v_s_2{/*内容盒子*/
+			position: absolute;
+			overflow: hidden;
+			height: 480px;
+			width: 250px;
+			padding: 35px 100px;
+			border-radius: 0 12px 12px 0;
+			z-index: 999;
+		}
+		.change{/*正常登陆与二维码互换*/
+			position: absolute;
+			width: 160px;
+			height: 160px;
+			right:-80px;
+			top:-80px;
+			transform: rotate(45deg);
+			background-color: rgba(200,200,255,0.25);
+			background-image: url(/public/images/erweima.png);
+			cursor:pointer;
+			transition: all 0.3s;
+			background-position: left;
+		}
+		.changec{
+			background-position: right;
+			position: absolute;
+			width: 160px;
+			height: 160px;
+			right:-80px;
+			top:-80px;
+			transform: rotate(45deg);
+			background-color: rgba(200,200,255,0.25);
+			background-image: url(/public/images/erweima.png);
+			cursor:pointer;
+			transition: all 0.3s;
+		}
+		.change:hover{
+			background-color: rgba(200,200,255,0.7);
+		}
+		.changec:hover{
+			background-color: rgba(200,200,255,0.7);
+		}
+		.login_top_m{/*gen字*/
+			height: 70px;
+			font-size: 26px;
+			font-weight: 1000;
+			color: #888888;
+		}
+		.login_top_m .F{
+			margin-top: 7px;
+			padding-left: 2px;
+			font-size: 12px;
+			font-weight: 400;
+		}
+		.loginyou{
+			margin-top: 10px;
+			font-size: 20px;
+			color:#666666;
+			text-align: left;
+			letter-spacing: 2px;
+			transition: transform 0.3s,color 0.5s,opacity 0.3s;
+			transform: translateX(0px);
+		}
+		.formd{/*表单*/
+			padding-top: 30px;
+			position: absolute;
+			top: 134px;
+			width: inherit;
+			height: 280px;
+			display: block;
+			transition: opacity 0.3s,top 0.5s;
+			opacity: 1;
+			/*background-color: aqua;*/
+		}
+		.form{/*表单*/
+			padding-top: 30px;
+			position: absolute;
+			width: inherit;
+			height: 280px;
+			/*background-color: aqua;*/
+			transition: opacity 0.3s,top 0.5s;
+			opacity: 0;
+		}
+		.signin{
+			position: relative;
+			height: 32px;
+			width: inherit;
+			opacity: 0;
+			transform: translateY(-100px);
+			transition: opacity 0.2s,transform 0.3s;
+		}
+		.s{
+			margin-top: 27.4px;
+		}
+		.sname{
+			margin-top: 0.5px;
+		}
+		.spassword{
+			margin-top: 29.5px;
+		}
+		.erweima_m{
+			position: absolute;
+			width: inherit;
+			height: 285px;
+			/*background-color: aqua;*/
+			background-image: url(/public/images/myewm.png);
+			overflow: hidden;
+			opacity: 0;
+			transition: opacity 0.5s,transform 0.2s;
+			display: none;
+		}
+		.erweima_md{
+			position: absolute;
+			width: inherit;
+			height: 285px;
+			/*background-color: aqua;*/
+			overflow: hidden;
+			opacity: 0.8;
+			transition: opacity 0.5s,transform 0.2s;
+			background-image: url(/public/images/myewm.png);
+		}
+		.userpsw{
+			position: relative;
+			width: 215px;
+			border: none;
+			outline: none;
+			height: 35px;
+			border-radius: 3px;
+			background-color: #faeff7;
+			color: #888888;
+			font-weight: 600;
+			padding-left: 35px;
+			caret-color: #aaaaaa;/*光标颜色*/
+			font-size: 18px;
+			z-index: 2;
+		}
+		.password{
+			margin-top: 30px;
+		}
+		.userpsw::-webkit-input-placeholder{
+			color: #bbbbbb;
+			font-weight: 300;
+		}
+		.sname_p{
+			position: absolute;
+			top:0px;
+			width: 35px;
+			height: 35px;
+			background: url(/public/images/sname.png) no-repeat center center;
+			background-size: 22px 18px;
+			z-index: 4;
+			cursor:pointer;
+		}
+		.suser_p{
+			position: absolute;
+			top:62.5px;
+			width: 35px;
+			height: 35px;
+			background: url(/public/images/user.png) no-repeat center center;
+			background-size: 20px 25px;
+			z-index: 4;
+			cursor:pointer;
+		}
+		.spsd_p{/*用户登陆图标*/
+			position: absolute;
+			top: 127.5px;
+			width: 35px;
+			height: 35px;
+			background: url(/public/images/psd.png) no-repeat center center;
+			background-size: 20px 25px;
+			z-index: 4;
+			cursor:pointer;
+		}
+		.user_p{/*用户图标*/
+			position: absolute;
+			top:30px;
+			width: 35px;
+			height: 35px;
+			background: url(/public/images/user.png) no-repeat center center;
+			background-size: 20px 25px;
+			z-index: 999;
+			cursor:pointer;
+		}
+		.psd_p{/*用户登陆图标*/
+			position: absolute;
+			top:95px;
+			width: 35px;
+			height: 35px;
+			background: url(/public/images/psd.png) no-repeat center center;
+			background-size: 20px 25px;
+			z-index: 999;
+			cursor:pointer;
+		}
+		.check{
+			margin-top: 15px;
+		}
+		.allow{
+			text-decoration: none;
+			vertical-align: middle;
+			font-size: 12px;
+			color:#888888;
+		}
+		.allow:hover{
+			color: blue;
+		}
+		.checkbox{
+			margin-left: 3px;
+			-webkit-appearance: none;  /*清除复选框默认样式*/
+			background: #fff url(/public/images/checkbox.png);   /*复选框的背景图*/
+			background-size: cover;
+			height: 18px;   /*高度*/
+			vertical-align: middle;
+			width: 18px;
+			outline: none;
+			border-radius: 3px;
+			vertical-align: middle;
+		}
+		.checkbox:hover{
+			background-position: -20px;
+		}
+		.checkbox:checked{/*选定效果*/
+			background-position: -40px;
+		}
+		.submit{/*登陆按钮*/
+			background-color:rgba(126,211,32,1.00);
+			width: inherit;
+			height: 40px;
+			border: none;
+			outline: none;
+			margin-top: 35px;
+			border-radius: 25px;
+			box-shadow: 0px 15px 55px 0px rgba(126,211,32,0.7);
+			font:600 16px "microsoft yahei";
+			color: white;
+			letter-spacing: 2px;
+			cursor:pointer;
+			transition: all 0.3s;
+		}
+		.submit:hover{/*移动上去效果*/
+			background-color:rgba(126,211,32,0.85);
+			box-shadow: 0px 10px 50px 0px rgba(126,211,32,0.7);
+			transform: translate(0,3px);
+		}
+		.hr{/*分割线*/
+			float: left;
+			height: 0.75px;
+			width: 120px;
+			margin-left: -100px;
+			margin-top: 290px;
+			background-color: #aaaaaa;
+		}
+		.hr1{
+			float: left;
+			height: 0.75px;
+			width: 120px;
+			margin-left: 230px;
+			background-color: #aaaaaa;
+		}
+		.waht{
+			position: absolute;
+			display: inline-block;
+			width: 60px;
+			text-align: center;
+			top: 421px;
+			left: 160px;
+			font-size: 12px;
+			letter-spacing: 30px;
+			color: #888888;
+		}
+		/*.right_logo_a{
+			display: block;
+			margin-top: 340px;
+			height: 80px;
+			width: 300px;
+			margin-left: -20px;
+			background:url(images/logoblue.png) no-repeat center center;
+			background-size: contain;
+			z-index: 999;
+		}*/
+		.sign{/*注册按钮*/
+			background-color:rgba(73,121,219,1.00);
+			width: inherit;
+			height: 40px;
+			border: none;
+			outline: none;
+			margin-top: 40px;
+			border-radius: 25px;
+			box-shadow: 0px 15px 55px 0px rgba(73,121,219,0.7);
+			font:600 16px "microsoft yahei";
+			color: white;
+			letter-spacing: 2px;
+			cursor:pointer;
+			transition: all 0.3s;
+		}
+		.sign:hover{/*移动上去效果*/
+			background-color:rgba(73,121,219,0.85);
+			box-shadow: 0px 10px 50px 0px rgba(73,121,219,0.7);
+			transform: translate(0,3px);
+		}
+		.error{
+			position: absolute;
+			left: 0;
+			color: #AD848B;
+			font-size: 13px;
+			width: 250px;
+			height: 20px;
+			/*display: none;*/
+			/*text-align: center;*/
+			z-index: -1;
+			transform: translateY(20px);
+			transition: all 0.5s;
+		}
+		.error_username{
+			top:10px;
+		}
+		.error p{
+			line-height: 19px;
+			height: 20px;
+			background-color: aqua;
+			border-radius: 5px;
+		}
+		.error_password{
+			top:75px;
+		}
+		.error_susername{
+			top: 43px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main"><!--登陆主内容大盒子-->
+		<div class="login"><!--登陆主内容定位盒子-->
+			<div class="login_v_m"><!--可视层阴影盒子-->
+				<div class="login_left login_v_s"><!--登陆主内容左边图可视盒子-->
+					<div class="login_png">
+						<div class="login_png_0 login_png_" id="p_0" style="display: block; background:url(/public/images/index_logo.png) no-repeat center center;"><!--logo--></div>
+						<div class="login_png_1 login_png_" id="p_1" style="background:url(/public/images/index_people.png) no-repeat center center;"><!--people--></div>
+						<div class="login_png_2 login_png_" id="p_2" style="display: none; background:url(/public/images/index_people2.png) no-repeat center center;"><!--logo--></div>
+					</div>
+					<div class="login_point"><!--左按钮元素层-->
+							<ul class="login_point_m" id="login_point_m">
+							</ul>
+					</div>
+				</div>
+				<div class="login_right login_v_s"><!--登陆主内容右边表单元素可视大盒子-->
+					<div class="login_right login_v_s_1"><!--登陆主内容右边表单元素可视子盒子1背景-->
+					</div>
+					<div class="login_v_s_2"><!--登陆主内容右边表单元素可视子盒子2内容-->
+						<div class="change" id="change"></div>
+						<div class="login_top_m"><!--登陆界面字-->
+							<p>Hello Generous</p>
+							<p class="F" id="F">忘记用户名或密码?&nbsp;&nbsp;&nbsp;<a href="#" id="find">找回账户</a></p>
+						</div>
+						<p class="loginyou" id="loginyou" >登录更精彩</p>
+						<!--登陆页面的表单-->
+						<form action="#" class="formd" id="form" style="display: block;"><!--表单域-->
+							<input type="text" name="username" class="userpsw username l" id="user" autofocus form="form" required="required" placeholder="请 输 入 用 户 名">
+							<label for="user"><!--元素定义标注-->
+								<div class="user_p"></div><!--用户图标-->
+							</label>
+							<div class="error error_username" id="sb"><p>&nbsp;您输入的用户名不存在,请重新输入</p></div><!--账户错误提示-->
+							<input type="password" name="password" class="userpsw password l" id="psd" form="form" required="required" placeholder="请 输 入 密 码">
+							<label for="psd"><!--元素定义标注-->
+								<div class="psd_p"></div><!--用户图标-->
+							</label>
+							<div class="error error_password" ><p>&nbsp;您输入的密码有误，请重新输入 :&#40;</p></div><!--账户错误提示-->
+							<div class="check"><!--选择框-->
+								<input type="checkbox" class="checkbox" id="checkbox" name="allow" form="form" required="required" checked>
+								<a href="#" class="allow">&nbsp;我同意并遵守社区相关基本规则</a>
+							</div>
+							<input type="submit" class="submit bt" value="登录" form="form" onClick="showHint();if(document.getElementsByClassName('l')[0].value!=''&&document.getElementsByClassName('l')[1].value!=''&&document.getElementById('checkbox').checked==true){return false;} ">
+						</form>
+						<!--登陆页面表单结束-->
+						<!--注册页面的表单-->
+						<form action="#" class="signin" id="signin" style="display: none;">
+							<label for="sname"><!--元素定义标注-->
+								<div class="sname_p"></div><!--用户图标-->
+							</label>
+							<input type="text" name="snaeme" class="userpsw sname s signi" id="sname" autofocus form="signin" required="required" placeholder="请 输 入 创 建 昵 称">
+							<label for="suser"><!--元素定义标注-->
+								<div class="suser_p"></div><!--用户图标-->
+							</label>
+							<input type="text" name="susername" class="userpsw susername s signi" id="suser" form="signin" required="required" placeholder="请 输 入 创 建 账 号">
+							<label for="spsd"><!--元素定义标注-->
+								<div class="spsd_p"></div><!--用户图标-->
+							</label>
+							<div class="error error_susername"><p>&nbsp;该账号已被注册，请重新输入</p></div><!--账户错误提示-->
+							<input type="text" name="spassword" class="userpsw spassword s signi" id="spsd" form="signin" required="required" placeholder="请 输 入 创 建 密 码">
+							<div class="check">
+								<input type="checkbox" class="checkbox" name="login" form="signin" id="scheckbox" checked required="required">
+								<a href="#" class="allow">&nbsp;我同意并遵守此内相关合同规定</a>
+							</div>
+							<input type="submit" class="submit bt" value="注册" form="signin" onClick="asignin();if(document.getElementsByClassName('signi')[0].value!=''&&document.getElementsByClassName('signi')[1].value!=''&&document.getElementsByClassName('signi')[2].value!=''&&document.getElementById('scheckbox').checked==true){return false;} ">
+						</form>
+						<!--注册页面表单结束-->
+						<div class="erweima_m" id="erweima_m">
+						</div>
+						<div class="hr"></div><div class="hr1"></div>
+						<p class="waht">WAHT</p>
+						<!--<a href="#" class="right_logo_a"></a>-->
+						<input type="button" class="sign bt" id="bsign" value="前往注册界面">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+	<script>
+		/*取得所有左边轮播图盒子*/
+		function f(){/*动画效果方法*/
+					for(a=0;a<pn.length;a++){/*将所有轮播图隐藏，并设置透明度为0*/
+						pn[a].style.display="none";
+						pn[a].style.opacity=0;
+					}
+					pn[page].style.display="block";/*当前按钮编号相对应的图显示出来*/
+					/*console.log(pn[page]);*/
+					var o=1;/*全局变量透明度的*/
+					for(a=0;a<pn.length;a++){/*变为原来样式*/
+						po[a].id="";
+					}
+					po[page].id="login_point_m_h";
+					if(page<pn.length-1)
+						{
+							page++;
+						}
+					else{
+						page=0;
+					}
+					var tid1 = setInterval(function (){/*用计时器做出渐显效果*/
+								o=o+1;
+								var a;
+								if(page==0){
+									a=2;
+								}
+								else{
+									a=page-1;
+								}
+								pn[a].style.opacity=o/10;/*设置相应值=====注:必须用整数来不然会有bug*/
+								/*console.log(pn[a]);*/
+								if(o>=10){/*清理定时器*/
+									clearInterval(tid1);
+								}
+							},30);
+				}
+		var x=0;
+		var pn=new Array();
+		while(a=document.getElementById("p_"+x)){
+			pn[x]=a;
+			x++;
+		};
+		/*得到按钮的父盒子*/
+		var po=new Array();
+		var pf=document.getElementById("login_point_m");
+		pf.addEventListener("mouseover",function(){clearInterval(tid);});
+		pf.addEventListener("mouseout",function(){tid=setInterval(function(){
+					f();},3000);});
+		for(i=0;i<pn.length;i++)/*创建子元素圆点便利并附加事件*/
+			{
+				po[i]=document.createElement("li");/*创建li元素*/
+				po[0].id="login_point_m_h";
+				pf.appendChild(po[i]);/*将li元素放在ul父元素下面*/
+				po[i].className=i;/*设置li的classname用来取得相应编号*/
+				po[i].addEventListener("click",function(){/*添加鼠标点击的事件*/
+					if(pn[this.className].style.display=="block"){/*如果原本就在显示,就取消渐显效果*/
+						return;
+					}
+					for(a=0;a<pn.length;a++){/*将所有轮播图隐藏，并设置透明度为0*/
+						pn[a].style.display="none";
+						pn[a].style.opacity=0;
+					}
+					var thisCN= this.className;/*取得对应编号*/
+					pn[thisCN].style.display="block";/*当前按钮编号相对应的图显示出来*/
+					var o=1;/*全局变量透明度的*/
+					var timerId = setInterval(function () {/*用计时器做出渐显效果*/
+						o=o+1;
+						pn[thisCN].style.opacity=o/10;/*设置相应值=====注:必须用整数来不然会有bug*/
+						/*console.log(pn[thisCN].style.opacity);*/
+						if(o>=10){/*清理定时器*/
+							clearInterval(timerId);
+						}
+					},30);
+					for(a=0;a<pn.length;a++){/*变为原来样式*/
+						po[a].id="";
+					}
+					this.id="login_point_m_h";
+				});
+			}
+		var page=1;
+		var tid=setInterval(function(){
+					f();},3000);
+		/*登陆方式转换*/
+		var ewm=document.getElementById("change");
+		var ewmm=document.getElementById("erweima_m");
+		var form=document.getElementById("form");
+		var ly=document.getElementById("loginyou");
+		var F=document.getElementById("F");
+		/*console.log(ewm);*/
+		ewm.onclick=function(){/*注册二维码事件*/
+			/*console.log(3);*/
+			if(ewm.className=="change"){
+				F.innerHTML="请您使用微信扫码登陆";
+				ewm.className="changec";
+				/*console.log(1);*/
+				form.style.display="none";
+				ewmm.style.display="block";
+				ly.style.transform="translateX(60px)";
+				ly.style.color="#4468a3";
+				setTimeout(function(){ewmm.className="erweima_md";
+				form.className="form";}, 100);
+				setTimeout(function(){
+					ly.style.marginLeft="-56px";
+					ly.innerHTML="////扫码登录更快捷////";
+				},100)
+			}
+			else{
+				F.innerHTML="忘记用户名或密码?&nbsp;&nbsp;&nbsp;<a href=\"#\" id=\034find\">找回账户</a>";
+				ewm.className="change";
+				form.style.display="block";
+				ewmm.style.display="none";
+				ly.innerHTML="登录更精彩";
+				ly.style.marginLeft="0px";
+				ly.style.transform="translateX(0px)";
+				ly.style.color="#666666";
+				setTimeout(function(){ewmm.className="erweima_m";
+				form.className="formd";}, 100);
+				/*console.log(2);*/
+			}
+		}
+		var signin=document.getElementById("signin");
+		var bsign=document.getElementById("bsign");
+		bsign.onclick=function(){
+			if(bsign.value=="前往注册界面"){
+				if(ewm.className=="change"){
+					form.style.display="none";
+					form.style.top="300px";	
+					form.style.opacity="0";
+					ly.style.display="none";
+					ly.style.opacity="0";
+				}
+				else{
+					ewmm.style.display="none";
+					ly.style.display="none";
+					ly.style.opacity="0";
+					ewmm.style.opacity="0";
+					ewmm.style.transform="scale(0,0)";
+				}
+				signin.style.display="block";
+				change.style.opacity="0";
+				bsign.value="返回登录界面";
+				F.innerHTML="请注册您的新账号";
+				setTimeout(function(){change.style.display="none";signin.style.opacity="1";signin.style.transform="translateY(0px)";}, 100);
+			}
+			else{
+				if(ewm.className=="change"){
+					form.style.display="block";
+					ly.style.display="block";
+					F.innerHTML="忘记用户名或密码?&nbsp;&nbsp;&nbsp;<a href=\"#\" id=\034find\">找回账户</a>";
+					setTimeout(function(){form.style.opacity="1";ly.style.opacity="1";form.style.top="134px";}, 100);
+				}
+				else{
+					ewmm.style.display="block";
+					ly.style.display="block";
+					F.innerHTML="请您使用微信扫码登录";
+					setTimeout(function(){ly.style.opacity="1";ewmm.style.opacity="1";ewmm.style.transform="scale(1,1)";}, 100);
+				}
+				bsign.value="前往注册界面";
+				signin.style.display="none";
+				signin.style.transform="translateY(-100px)";
+				change.style.display="block";
+				signin.style.opacity="0";
+				setTimeout(function(){change.style.opacity="1";}, 100);
+			}
+			
+		};
+		var textbox=document.getElementsByClassName("userpsw");
+		var bt=document.getElementsByClassName("bt");
+		var er=document.getElementsByClassName("error");
+		for(i=0;i<bt.length;i++){
+			bt[i].addEventListener("click",function(){
+				for(i=0;i<er.length;i++){
+					er[i].style.transform="translateY(20px)";
+				}
+			});
+		}
+		for(i=0;i<textbox.length;i++){
+			textbox[i].addEventListener("click",function(){
+				for(i=0;i<er.length;i++){
+					er[i].style.transform="translateY(20px)";
+				}
+			});
+		}
+	</script>
+</html>

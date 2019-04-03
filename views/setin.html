@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<body>
+	<input type="text" id="id" value="3">
+	<input type="text" id="p" value="3.jpg">
+	<div style="height: 50px;width: 50px;background-color: aqua"></div>
+	<script src="js/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function (){
+			var id = $('#id').val()
+			var p = $('#p').val()
+			$('div').on('click',function () {
+				$.get('/setin',{id:$('#id').val(),p:$('#p').val()},function (data) {
+					console.log({id:$('#id').val(),p:$('#p').val()})
+				})
+				$('#id').val(parseInt($('#id').val())+1)
+				$('#p').val(parseInt($('#p').val())+1+'.jpg')
+			})
+		})
+	
+	</script>
+</body>
+</html>

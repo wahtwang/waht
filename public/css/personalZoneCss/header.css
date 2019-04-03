@@ -1,0 +1,67 @@
+﻿.top_bar {
+	position: fixed;
+	left: 0;
+	right: 0;
+    height: 60px;
+    background-color: rgba(255,255,255,0.7);
+    transition: background-color 0.3s,box-shadow 0.5s;
+    box-shadow: 0 0 10px 0 #eeeeee;
+	z-index: 999;
+}
+
+.top_bar_b{
+	background-color: rgba(255,255,255,0.9);
+	box-shadow: none;
+}
+
+.top_bar:hover {
+    background-color: rgba(255,255,255,1);
+}
+
+.top_bar_m { /*导航条内容居中*/
+    height: inherit;
+    width: 1260px;
+    margin: 0 auto; /*background-color: burlywood;*/
+}
+
+.top_bar_logo {
+    float: left;
+    height: 60px;
+    width: 120px;
+    background: url(/public/images/logo_blue.png) no-repeat left center;
+    background-size: 100px 40px; /*background-color: cadetblue;*/
+}
+
+.top_bar_logoWord {
+    float: left;
+    height: 60px;
+    width: 200px;
+    background: url(/public/images/知识发掘生活.png) no-repeat;
+    background-position: left 13px;
+    background-size: 180px 38px;
+}
+
+.top_bar_m ul {
+	float: right;
+}
+
+.top_bar_m li {
+	float: right;
+	height: 60px;
+	line-height: 60px;
+	padding-left:30px;
+	font-size: 18px;
+	color: #2683ff;
+}
+.top_bar_m li a {
+	color: #2683ff;
+}
+.top_bar_m li span {
+	font-size: 16px;
+	cursor: pointer;
+	color: #888888;
+	margin-left: 10px;
+}
+.top_bar_m li span:hover {
+	color: blue;
+}

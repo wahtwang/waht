@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>您好waht_root</title>
+	<link rel="stylesheet" href="/public/css/nomal.css">
+	<style>
+		::-webkit-scrollbar {/*去掉滚动条*/
+		 	display:none;
+		}
+		@font-face {
+			font-family: 'iconfont';
+			src: url('/public/fonts/personZone/iconfont.woff') format('woff');
+		}
+		.iconfont {
+  	 		font-family:"iconfont" !important;
+  			font-size:16px;
+  			font-style:normal;
+  			-webkit-font-smoothing: antialiased;
+ 			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+   		}
+		body{
+			background-color: rgba(245,245,245,1.00);
+		}
+		.top_bar{
+			height: 60px;
+			background-color: white;
+			transition: background-color 0.5s;
+			box-shadow: 0 0 10px 0 #eeeeee;
+		}
+		.top_bar:hover{
+			background-color: rgba(171,171,171,0.3);
+		}
+		.top_bar_m {/*导航条内容居中*/
+		height: inherit;
+		width: 1260px;
+		margin: 0 auto;/*background-color: burlywood;*/
+		}
+		.top_bar_logo {
+			float: left;
+			height: 60px;
+			width: 120px;
+			background: url(/public/images/logo_blue.png) no-repeat left center;
+			background-size: 100px 40px;/*background-color: cadetblue;*/
+		}
+		.top_bar_logoWord {
+			float: left;
+			height: 60px;
+			width: 200px;
+			background: url(/public/images/知识发掘生活.png) no-repeat;
+			background-position: left 13px;
+			background-size: 180px 38px;
+		}
+		.main{
+			width: 1260px;
+			margin: 0 auto;
+			margin-top: 10px;
+		}
+		.left_bar{
+			float: left;
+			width: 160px;
+			height: inherit;
+		}
+		.content{
+			float: left;
+			width: 800px;
+			height: inherit;
+			margin: 0 10px;
+		}
+		.myPointBox{
+			width: inherit;
+			background-color: white;
+			border-radius: 5px;
+			font-size: 16px;
+			font-weight: 700;
+			box-shadow: 0 0 10px 0 #eeeeee;
+		}
+		.myPointBox ul{
+			width: 100px;
+			margin: 0 auto;
+		}
+		.myPointBox li{
+			border-bottom: 1px solid #eeeeee;
+			line-height: 40px;
+			color: #444444;
+		}
+		.myPointBox a{
+			color: #444444;
+		}
+		.myPointBox li:nth-last-child(1){
+			border:none;
+		}
+		a:hover{
+			color: #2683ff;
+		}
+		.box_title{
+			padding-left: 30px;
+			font-size: 14px;
+			line-height: 30px;
+			color: #999999;
+		}
+		.myPoint{
+			margin-bottom: 30px;
+		}
+		.about a{
+			color: #666666;
+			font-weight: 600;
+			font-size: 14px;
+		}
+		.about a:hover{
+			color: #2683ff;
+		}
+		/*发布栏===================================*/
+		.publish .myPointBox{
+			height: 200px;
+		}
+		.publish .box_title{
+			color: #bbbbbb;
+			letter-spacing:1px;
+		}
+		.publish_bar{
+			width: 750px;
+			margin: auto;
+		}
+		textarea{
+			resize:none;
+			width: 740px;
+			height: 110px;
+			border: 1.5px solid #eeeeee;
+			border-radius: 5px;
+			box-shadow: 0 0 10px -2px #eeeeee inset;
+			padding: 5px;
+			outline:none;
+			font-size: 16px;
+			color: #444444;
+			font-weight: 600;
+		}
+		textarea:focus{
+			box-shadow:0 0 0 0 #eeeeee inset;
+		}
+		.tools{
+			width: 740px;
+			margin: auto;
+		}
+		.tools ul{
+			float: left;
+		}
+		.tools li{
+			float: left;
+			height: 40px;
+			line-height: 40px;
+			font-weight: 400;
+			color: #2683ff;
+			margin-right: 3px;
+			font-size: 17px;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+		.tools li:hover{
+			color: #50aaff;
+		}
+		.tools li:hover i{
+			color: #50aaff;
+		}
+		.tools li i{
+			color: #2683ff;
+			font-size: 19px;
+			margin-right: 3px;
+		}
+		.submit{
+			margin-top: 5px;
+			float: right;
+			height: 28px;
+			width: 80px;
+			background-color: #50aaff;
+			border-radius: 5px;
+			color: white;
+			outline: none;
+			border: none;
+			cursor: pointer;
+		}
+		.submit:hover{
+			background-color: #4090ff;
+		}
+		.submit:active{
+			background-color: #2683ff; 
+		}
+		/*发布栏结束===================================*/
+		/*详细NODE开始============*/
+		.node .myPointBox{
+			padding: 20px;
+			padding-bottom: 5px;
+		}
+		.author{
+			height: 70px;
+			padding-bottom: 5px;
+			border-bottom: 1px solid #dddddd;
+		}
+		.head{
+			height: inherit;
+			background-color: #888888;
+			width: 70px;
+			border-radius: 50%;
+			float: left;
+			margin-right: 10px;
+		}
+		.author ul{
+			height: inherit;
+			width: 300px;
+			float: left;
+		}
+		.author li{
+			border-bottom: none;
+			line-height: 35px;
+			font-size: 25px;
+		}
+		li.user_signature{
+			font-size: 14px;
+			font-weight: 400;
+			color: #aaaaaa;
+		}
+		.author .submit{
+			margin-top: 15px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			margin-right: 10px;
+		}
+		.node_content{
+			padding: 10px 30px 0px;
+			border-bottom:1px solid #dddddd;
+		}
+		.node_content span{
+			float: right;
+			height: 20px;
+		}
+		.word{
+			margin-bottom: 25px;
+			font-weight: 500;
+			line-height: 25px;
+			text-indent: 32px;
+		}
+		.tietle{
+			font-size: 20px;
+			margin: 15px 0;
+			text-align: center;
+		}
+		.date{
+			height: 20px;
+			text-align: right;
+			color: #888888;
+			font-weight: 500;
+		}
+		.date span{
+			margin-right: -20px;
+		}
+		.note_tools{
+			padding-top: 5px;
+		}
+		.note_tools ul{
+			height: 40px;
+			width: inherit;
+		}
+		.note_tools li{
+			text-align: center;
+			width: 189px;
+			float: left;
+			border: none;
+			border-left: 1px solid #dddddd;
+			color: #aaaaaa;
+			font-weight: 400;
+			cursor: pointer;
+		}
+		.note_tools li:nth-child(1){
+			margin-left: 0;
+			border: none;
+		}
+		.note_tools li:nth-last-child(1){
+			margin-right: 0;
+			border-left: 1px solid #dddddd;
+		}
+		.note_tools li:hover{
+			color: #888888;
+		}
+		.publish {
+			margin-bottom: 12px;
+		}
+		/*详细NODE结束============*/
+		.right_bar{
+			float: right;
+			width: 280px;
+		}
+		.user .myPointBox{
+			height: 200px;
+			overflow: hidden;
+		}
+		.head_bg{
+			background-color: aqua;
+			height: 90px;
+		}
+		.user .head{
+			height: 70px;
+			margin: -50px auto 0;
+			float: none;
+		}
+		.username{
+			text-align: center;
+			font-size: 18px;
+			margin-bottom: 5px;
+		}
+		.user ul{
+			width: inherit;
+			height: 40px;
+		}
+		.user li{
+			text-align: center;
+			line-height: 28px;
+			width: 90px;
+			float: left;
+			border: none;
+			border-right: 1px solid #dddddd;
+		}
+		.user li p:nth-child(odd){
+			font-size: 22px;
+		}
+		/*公告栏====================*/
+		.form ul{
+			width: 250px;
+		}
+		.form li a{
+			color: brown;
+		}
+		.form li a:hover{
+			color: #2683ff;
+		}
+		.hot li {
+			height: 40px;
+		}
+		.hot li span{
+			float: right;
+		}
+		.hot li a{
+			float: left;
+			width: 200px;
+			height: 40px;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	</style>
+</head>
+<body>
+	<!--顶部导航栏开始-->
+	<div class="top_bar">
+		<div class="top_bar_m">
+			<a href="/"><div class="top_bar_logo"></div></a>
+			<a href="/"><div class="top_bar_logoWord"></div></a>
+		</div>
+	</div>
+	<div class="main">
+		<div class="left_bar">
+			<div class="left_bar_fixed">
+				<div class="myPoint">
+					<p class="box_title">我的博客</p>
+					<div class="myPointBox">
+						<ul>
+							<li><a href="/">首页</a></li>
+							<li><a href="">我的收藏</a></li>
+							<li><a href="">我的赞</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="myPoint about">
+					<p class="box_title">相关动态</p>
+					<div class="myPointBox">
+						<ul>
+							<li><a href="">游戏</a></li>
+							<li><a href="">名人明星</a></li>
+							<li><a href="">搞笑</a></li>
+							<li><a href="">工业设计</a></li>
+							<li><a href="">数码</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="myPoint publish">
+				<div class="myPointBox">
+					<p class="box_title">尝试着分享你的瞬间</p>
+					<form action="/publish" method="post">
+						<div class="publish_bar">
+							<textarea autofocus placeholder="记录你的生活。。。"></textarea>
+						</div>
+						<div class="tools">
+							<ul>
+								<li><i class="iconfont">&#xe635;</i>添加标签</li>
+							</ul>
+							<input type="submit" class="submit" value="发布">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="node">
+				<div class="myPoint">
+					<div class="myPointBox">
+						<div class="author">
+							<div class="head">
+								
+							</div>
+							<ul>
+								<li>waht_root</li>
+								<li class="user_signature">咸鱼咸鱼咸鱼就是咸鱼就是咸鱼就是咸鱼</li>
+							</ul>
+							<div class="submit">取消关注</div>
+						</div>
+						<div class="node_content">
+							<div class="tietle">就会感受到安徽广东就哈工大</div>
+							<div class="word">
+								
+								民警敲门后，门很快就打开了，一股香味扑鼻而来。原来，一家人正在吃香喷喷的晚饭，并没有人吸毒。
+
+此时，黎先生也证实，之前闻到的香味就是邻居家的菜香。民警经过现场搜查，并未发现毒品。亲眼看到这种情况后，黎先生终于相信是自己闹了乌龙。
+
+随后，民警对业主们进行了安全常识宣传后离开。在此，民警也提醒广大市民朋友，公安机关欢迎大家随时提供违法犯罪线索，但不能仅凭臆断随意举报他人，以免给他人生活带来不便民警敲门后，门很快就打开了，一股香味扑鼻而来。原来，一家人正在吃香喷喷的晚饭，并没有人吸毒。
+
+此时，黎先生也证实，之前闻到的香味就是邻居家的菜香。民警经过现场搜查，并未发现毒品。亲眼看到这种情况后，黎先生终于相信是自己闹了乌龙。
+
+随后，民警对业主们进行了安全常识宣传后离开。在此，民警也提醒广大市民朋友，公安机关欢迎大家随时提供违法犯罪线索，但不能仅凭臆断随意举报他人，以免给他人生活带来不便民警敲门后，门很快就打开了，一股香味扑鼻而来。原来，一家人正在吃香喷喷的晚饭，并没有人吸毒。
+
+此时，黎先生也证实，之前闻到的香味就是邻居家的菜香。民警经过现场搜查，并未发现毒品。亲眼看到这种情况后，黎先生终于相信是自己闹了乌龙。
+
+随后，民警对业主们进行了安全常识宣传后离开。在此，民警也提醒广大市民朋友，公安机关欢迎大家随时提供违法犯罪线索，但不能仅凭臆断随意举报他人，以免给他人生活带来不便</div>
+							<div class="date"><span>发布于50分钟前</span></div>
+						</div>
+						<div class="note_tools">
+							<ul>
+								<li>收藏</li>
+								<li>转发:54651</li>
+								<li>回复:212</li>
+								<li>点赞:54445</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right_bar">
+			<div class="myPoint user">
+				<div class="myPointBox">
+					<div>
+						<div class="head_bg"></div>
+						<div class="head"></div>
+					</div>
+					<p class="username">waht_root</p>
+					<ul>
+						<li><p>15</p><p>关注</p></li>
+						<li><p>231</p><p>粉丝</p></li>
+						<li><p>15</p><p>博客</p></li>
+					</ul>
+				</div>
+			</div>
+			<div class="myPoint form">
+				<p class="box_title">公告栏</p>
+				<div class="myPointBox">
+					<ul>
+						<li><a href="">&#91;是啊是啊似啊的的打&#93;</a></li>
+						<li><a href="">&#91;安端是的阿萨大大四&#93;</a></li>
+						<li><a href="">&#91;阿萨大安德森安端安端阿萨大a&#93;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="myPoint hot form">
+				<p class="box_title">热门博客</p>
+				<div class="myPointBox">
+					<ul>
+						<li><a href="">&#91;是啊是啊似啊的的打&#93;</a><span>4534</span></li>
+						<li><a href="">&#91;安端是的阿萨大大四&#93;</a><span>1234</span></li>
+						<li><a href="">&#91;阿萨大安德森安端安端阿萨大a&#93;</a><span>4535</span></li>
+						<li><a href="">&#91;是啊是啊似啊的的打&#93;</a><span>4563</span></li>
+						<li><a href="">&#91;安端是的阿萨大大四&#93;</a><span>4534</span></li>
+						<li><a href="">&#91;阿萨大安德森安端安端阿萨大a&#93;</a><span>453</span></li>	
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

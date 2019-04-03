@@ -1,0 +1,573 @@
+{{extend './base.html'}}
+{{block 'head'}}
+<style>
+	.main{
+			width: 1260px;
+			margin: 0 auto;
+			margin-top: 10px;
+		}
+		.left_bar{
+			float: left;
+			width: 160px;
+			height: inherit;
+		}
+		.content{
+			float: left;
+			width: 800px;
+			height: inherit;
+			margin: 0 10px;
+		}
+		.myPointBox{
+			width: inherit;
+			background-color: white;
+			border-radius: 5px;
+			font-size: 16px;
+			font-weight: 700;
+			box-shadow: 0 0 10px 0 #eeeeee;
+		}
+		.myPointBox ul{
+			width: 100px;
+			margin: 0 auto;
+		}
+		.myPointBox li{
+			border-bottom: 1px solid #eeeeee;
+			line-height: 40px;
+			color: #444444;
+		}
+		.myPointBox a{
+			color: #444444;
+		}
+		.myPointBox li:nth-last-child(1){
+			border:none;
+		}
+		a:hover{
+			color: #2683ff;
+		}
+		.box_title{
+			padding-left: 30px;
+			font-size: 14px;
+			line-height: 30px;
+			color: #999999;
+		}
+		.myPoint{
+			margin-bottom: 30px;
+		}
+		.about a{
+			color: #666666;
+			font-weight: 600;
+			font-size: 14px;
+		}
+		.about a:hover{
+			color: #2683ff;
+		}
+		/*发布栏===================================*/
+		.publish .myPointBox{
+			height: 200px;
+		}
+		.publish .box_title{
+			color: #bbbbbb;
+			letter-spacing:1px;
+		}
+		.publish_bar{
+			width: 750px;
+			margin: auto;
+		}
+		textarea{
+			resize:none;
+			width: 740px;
+			height: 110px;
+			border: 1.5px solid #eeeeee;
+			border-radius: 5px;
+			box-shadow: 0 0 10px -2px #eeeeee inset;
+			padding: 5px;
+			outline:none;
+			font-size: 16px;
+			color: #444444;
+			font-weight: 600;
+		}
+		textarea:focus{
+			box-shadow:0 0 0 0 #eeeeee inset;
+		}
+		.tools{
+			width: 740px;
+			margin: auto;
+		}
+		.tools ul{
+			float: left;
+		}
+		.tools li{
+			float: left;
+			height: 40px;
+			line-height: 40px;
+			font-weight: 400;
+			color: #2683ff;
+			margin-right: 3px;
+			font-size: 17px;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+		.tools li:hover{
+			color: #50aaff;
+		}
+		.tools li:hover i{
+			color: #50aaff;
+		}
+		.tools li i{
+			color: #2683ff;
+			font-size: 19px;
+			margin-right: 3px;
+		}
+		.submit{
+			margin-top: 5px;
+			float: right;
+			height: 28px;
+			width: 80px;
+			background-color: #50aaff;
+			border-radius: 5px;
+			color: white;
+			outline: none;
+			border: none;
+			cursor: pointer;
+		}
+		.submit:hover{
+			background-color: #4090ff;
+		}
+		.submit:active{
+			background-color: #2683ff; 
+		}
+		/*发布栏结束===================================*/
+		/*详细NODE开始============*/
+		.node .myPointBox{
+			padding: 20px;
+			padding-bottom: 5px;
+		}
+		.author{
+			height: 70px;
+			padding-bottom: 5px;
+			border-bottom: 1px solid #dddddd;
+		}
+		.head{
+			height: inherit;
+			background-color: #888888;
+			width: 70px;
+			border-radius: 50%;
+			float: left;
+			margin-right: 10px;
+		}
+		.author ul{
+			height: inherit;
+			width: 300px;
+			float: left;
+		}
+		.author li{
+			border-bottom: none;
+			line-height: 35px;
+			font-size: 25px;
+		}
+		li.user_signature{
+			font-size: 14px;
+			font-weight: 400;
+			color: #aaaaaa;
+		}
+		.author .submit{
+			margin-top: 15px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			margin-right: 10px;
+		}
+		.node_content{
+			padding: 10px 30px 0px;
+			border-bottom:1px solid #dddddd;
+		}
+		.node_content span{
+			float: right;
+			height: 20px;
+		}
+		.word{
+			margin-bottom: 25px;
+			font-weight: 500;
+			line-height: 25px;
+			text-indent: 32px;
+		}
+		.tietle{
+			font-size: 20px;
+			margin: 15px 0;
+			text-align: center;
+		}
+		.date{
+			height: 20px;
+			text-align: right;
+			color: #888888;
+			font-weight: 500;
+		}
+		.date span{
+			margin-right: -20px;
+		}
+		.note_tools{
+			padding-top: 5px;
+		}
+		.note_tools ul{
+			height: 40px;
+			width: inherit;
+		}
+		.note_tools li{
+			text-align: center;
+			width: 189px;
+			float: left;
+			border: none;
+			border-left: 1px solid #dddddd;
+			color: #aaaaaa;
+			font-weight: 400;
+			cursor: pointer;
+		}
+		.note_tools li:nth-child(1){
+			margin-left: 0;
+			border: none;
+		}
+		.note_tools li:nth-last-child(1){
+			margin-right: 0;
+			border-left: 1px solid #dddddd;
+		}
+		.note_tools li:hover{
+			color: #888888;
+		}
+		.publish {
+			margin-bottom: 12px;
+		}
+		/*详细NODE结束============*/
+		.right_bar{
+			float: right;
+			width: 280px;
+		}
+		.user .myPointBox{
+			height: 200px;
+			overflow: hidden;
+		}
+		.head_bg{
+			background-color: aqua;
+			height: 90px;
+		}
+		.user .head{
+			height: 70px;
+			margin: -50px auto 0;
+			float: none;
+			background: url(/public/images/user_photo_head/{{user_Portrait}}) no-repeat center center;
+			background-size: cover;
+		}
+		.username{
+			text-align: center;
+			font-size: 18px;
+			margin-bottom: 5px;
+		}
+		.user ul{
+			width: inherit;
+			height: 40px;
+		}
+		.user li{
+			text-align: center;
+			line-height: 28px;
+			width: 90px;
+			float: left;
+			border: none;
+			border-right: 1px solid #dddddd;
+		}
+		.user li p:nth-child(odd){
+			font-size: 22px;
+		}
+		/*公告栏====================*/
+		.form ul{
+			width: 250px;
+		}
+		.form li a{
+			color: brown;
+		}
+		.form li a:hover{
+			color: #2683ff;
+		}
+		.hot li {
+			height: 40px;
+		}
+		.hot li span{
+			float: right;
+		}
+		.hot li a{
+			float: left;
+			width: 200px;
+			height: 40px;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	.scroll_bar{
+	position: fixed;
+	right: 70px;
+	top: 20%;
+	height: 430px;
+	width: 5px;
+	border-radius: 5px;
+	background-color: #4594FF;
+}
+.scroll_point{
+	position: absolute;
+	left: 0px;
+	width: 5px;
+	height: 30px;
+	background-color: white;
+	box-shadow: 0 0 2px 0 #3eccff;
+	opacity: 0.9;
+	border-radius: 3px;
+	transition: width 0.3s, left 0.3s;
+	cursor: pointer;
+}
+.scroll_bar:hover{
+	background-color: rgba(80,220,255,1);
+}
+.scroll_bar:hover .scroll_point{
+	box-shadow: 0 0 1px 0 #3eccff;
+	/*transform: scaleX(4);*/
+	opacity: 1;
+	width: 21px;
+	left: -8px;
+}
+.scroll_bar:active .scroll_point{
+	box-shadow: 0 0 1px 0 #3eccff;
+	/*transform: scaleX(4);*/
+	opacity: 1;
+	width: 21px;
+	left: -8px;
+}
+.scroll_bar:active{
+	background-color: rgba(80,220,255,1);
+}
+</style>
+{{/block}}
+{{block 'title'}}这里是WAHT,您好 {{user_Nickname}}{{/block}}
+{{block 'body'}}
+<div class="main">
+		<div class="left_bar">
+			<div class="left_bar_fixed">
+				<div class="myPoint">
+					<p class="box_title">我的博客</p>
+					<div class="myPointBox">
+						<ul>
+							<li><a href="/">首页</a></li>
+							<li><a href="">我的收藏</a></li>
+							<li><a href="">我的赞</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="myPoint about">
+					<p class="box_title">相关动态</p>
+					<div class="myPointBox">
+						<ul>
+							<li><a href="">游戏</a></li>
+							<li><a href="">名人明星</a></li>
+							<li><a href="">搞笑</a></li>
+							<li><a href="">工业设计</a></li>
+							<li><a href="">数码</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="myPoint publish">
+				<div class="myPointBox">
+					<p class="box_title">尝试着分享你的瞬间</p>
+					<form action="/publish" method="post">
+						<div class="publish_bar">
+							<textarea autofocus placeholder="记录你的生活。。。"></textarea>
+						</div>
+						<div class="tools">
+							<ul>
+								<a href="/editor"><li><i class="iconfont">&#xe635;</i>发布文章</li></a>
+							</ul>
+							<input type="submit" class="submit" value="发布">
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="node note">
+				<div class="myPoint">
+					<div class="myPointBox">
+						<div class="author">
+							<div class="head" style="background:url(/public/images/user_photo_head/waht_bani.jpg);background-size: contain;">
+								
+							</div>
+							<ul>
+								<li>panfei</li>
+								<li class="user_signature">咸鱼咸鱼咸鱼就是咸鱼就是咸鱼就是咸鱼</li>
+							</ul>
+							<div class="submit unfocus">取消关注</div>
+						</div>
+						<div class="node_content">
+							<div class="tietle">就会感受到安徽广东就哈工大</div>
+							<div class="word">
+								
+								民警敲门后，门很快就打开了，一股香味扑鼻而来。原来，一家人正在吃香喷喷的晚饭，并没有人吸毒。
+
+此时，黎先生也证实，之前闻到的香味就是邻居家的菜香。民警经过现场搜查，并未发现毒品。亲眼看到这种情况后，黎先生终于相信是自己闹了乌龙。
+
+随后，民警对业主们进行了安全常识宣传后离开。在此，民警也提醒广大市民朋友，公安机关欢迎大家随时提供违法犯罪线索，但不能仅凭臆断随意举报他人，以免给他人生活带来不便民警敲门后，门很快就打开了，一股香味扑鼻而来。原来，一家人正在吃香喷喷的晚饭，并没有人吸毒。
+
+此时，黎先生也证实，之前闻到的香味就是邻居家的菜香。民警经过现场搜查，并未发现毒品。亲眼看到这种情况后，黎先生终于相信是自己闹了乌龙。
+
+随后，民警对业主们进行了安全常识宣传后离开。在此，民警也提醒广大市民朋友，公安机关欢迎大家随时提供违法犯罪线索，但不能仅凭臆断随意举报他人，以免给他人生活带来不便民警敲门后，门很快就打开了，一股香味扑鼻而来。原来，一家人正在吃香喷喷的晚饭，并没有人吸毒。
+
+此时，黎先生也证实，之前闻到的香味就是邻居家的菜香。民警经过现场搜查，并未发现毒品。亲眼看到这种情况后，黎先生终于相信是自己闹了乌龙。
+
+随后，民警对业主们进行了安全常识宣传后离开。在此，民警也提醒广大市民朋友，公安机关欢迎大家随时提供违法犯罪线索，但不能仅凭臆断随意举报他人，以免给他人生活带来不便</div>
+							<div class="date"><span>发布于50分钟前</span></div>
+						</div>
+						<div class="note_tools">
+							<ul>
+								<li>收藏</li>
+								<li>转发:54651</li>
+								<li>回复:212</li>
+								<li>点赞:54445</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="node note">
+				<div class="myPoint">
+					<div class="myPointBox">
+						<div class="author">
+							<div class="head" style="background:url(/public/images/user_photo_head/waht_bani.jpg);background-size: contain;">
+								
+							</div>
+							<ul>
+								<li>panfei</li>
+								<li class="user_signature">咸鱼咸鱼咸鱼就是咸鱼就是咸鱼就是咸鱼</li>
+							</ul>
+							<div class="submit unfocus">取消关注</div>
+						</div>
+						<div class="node_content">
+							<div class="tietle">文章</div>
+							<div class="word">
+								
+								文章，1984年6月26日出生于陕西省西安市，中国内地男演员、导演。2006年毕业于中央戏剧学院表演系。
+2004年参演电视剧《与青春有关的日子》，开始在影视圈崭露头角 [1]  。2005年拍摄古装剧《锦衣卫》。2007年主演赵宝刚导演的青春剧《奋斗》； [2]  同年，主演首部电影《走着瞧》。2008年主演滕华涛执导的电视剧《蜗居》，饰演80后城市青年小贝。 [1]  [3]  2009年，在电影《海洋天堂》中扮演自闭症患者王大福；同年参演抗战题材的电视剧《雪豹》 [4]  。2011年，主演的电视剧《裸婚时代》在各大卫视播出； [5]  2011年-2012年连续2年获得北京大学生电影节 [6-7]  最受大学生欢迎男演员奖。2012年，凭借电影《失恋33天》获得第31届大众电影百花奖最佳男主角奖； [8]  同年成立自己经营的北京君竹影视文化有限公司，并导演第一部影视作品《小爸爸》。2013年2月，主演的电影《西游·降魔篇》在全国上映。 [9] 
+2014年3月28日，主演的中韩合资文艺爱情片《我在路上最爱你》在全国上映。2014年12月18日，在姜文执导的动作喜剧片《一步之遥》中扮演武七一角。 [10]  2016年，主演电视剧《少帅》，饰演张学良 [11]  ；主演电视剧《剃刀边缘》 [12]  。7月15日导演的电影《陆垚知马俐》上映。 [13] 
+演艺事业外，文章也参与公益慈善事业，2010年成立大福自闭症关爱基金。
+2017年9月16日，凭借《陆垚知马俐》获得第31届中国电影金鸡奖导演处女作奖。</div>
+							<div class="date"><span>发布于50分钟前</span></div>
+						</div>
+						<div class="note_tools">
+							<ul>
+								<li>收藏</li>
+								<li>转发:54651</li>
+								<li>回复:212</li>
+								<li>点赞:54445</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right_bar">
+			<div class="myPoint user">
+				<div class="myPointBox">
+					<div>
+						<div class="head_bg"></div>
+						<div class="head"></div>
+					</div>
+					<p class="username">{{user_Nickname}}</p>
+					<ul>
+						<li><p>{{f_sum}}</p><p>关注</p></li>
+						<li><p>{{f_sum}}</p><p>粉丝</p></li>
+						<a href="/mb"><li><p>{{n_sum}}</p><p>博客</p></li></a>
+					</ul>
+				</div>
+			</div>
+			<div class="myPoint form">
+				<p class="box_title">公告栏</p>
+				<div class="myPointBox">
+					<ul>
+						<li><a href="">&#91;是啊是啊似啊的的打&#93;</a></li>
+						<li><a href="">&#91;安端是的阿萨大大四&#93;</a></li>
+						<li><a href="">&#91;阿萨大安德森安端安端阿萨大a&#93;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="myPoint hot form">
+				<p class="box_title">热门博客</p>
+				<div class="myPointBox">
+					<ul>
+						<li><a href="">&#91;是啊是啊似啊的的打&#93;</a><span>4534</span></li>
+						<li><a href="">&#91;安端是的阿萨大大四&#93;</a><span>1234</span></li>
+						<li><a href="">&#91;阿萨大安德森安端安端阿萨大a&#93;</a><span>4535</span></li>
+						<li><a href="">&#91;是啊是啊似啊的的打&#93;</a><span>4563</span></li>
+						<li><a href="">&#91;安端是的阿萨大大四&#93;</a><span>4534</span></li>
+						<li><a href="">&#91;阿萨大安德森安端安端阿萨大a&#93;</a><span>453</span></li>	
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="scroll_bar"><!--自制滚动条-->
+	<div class="scroll_point"></div>
+</div>
+{{/block}}
+{{block 'script'}}
+<script src="/public/js/personIndex.js"></script>
+<script>
+if ({{f_sum}}===0) {
+	$('.note').css('display','none')
+}
+	;(function () {
+		var dHeight = $(document).height()
+		var keepScroll = 0
+		var $scrollBar=$(".scroll_bar")
+		var $scrollPoint= $(".scroll_point")
+		var barTop
+		var $html = $("html")
+		$scrollBar.get(0).onselectstart = function(){return false}
+		$(window).scroll(function(){
+			dHeight = $(document).height()
+			$scrollPoint.css("top",window.pageYOffset/(dHeight-$(window).height())*400)
+		})
+		var getMousePosition = function (e) {
+			var mouseY = e.clientY
+			return mouseY
+		}
+		var changePointPosition = function (mouseY,barTop) {
+			var mouseRTop = mouseY-barTop
+			if(mouseRTop>=15&&mouseRTop<=415){
+				$scrollPoint.css("top",mouseRTop-15)//pointTop
+				return mouseRTop-15
+			}
+			else if (mouseRTop<15) {
+				$scrollPoint.css("top",0)
+				return 0
+			}
+			else{
+				$scrollPoint.css("top",400)
+				return 400
+			}
+		}
+		$scrollBar.on("mousedown",function (e) {
+			var mouseY = getMousePosition(e)
+			barTop = parseInt($scrollBar.css("top"))
+			var pointTop = changePointPosition(mouseY,barTop)
+			keepScroll = 1
+			$html.scrollTop((dHeight-$(window).height())/400*pointTop)
+		})
+		$html.on("mousemove",function (e) {
+			if(keepScroll===1){
+				var mouseY = getMousePosition(e)
+				var pointTop = changePointPosition(mouseY,barTop)
+				$html.scrollTop((dHeight-$(window).height())/400*pointTop)
+			}
+		})
+		$html.on("mouseup",function () {
+			keepScroll = 0
+		})
+	})()
+</script>
+{{/block}}

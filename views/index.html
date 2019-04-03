@@ -1,0 +1,384 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="/public/css/normal.css">
+	<link rel="stylesheet" href="/public/css/index.css">
+	<meta charset="utf-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<script src="/public/js/jquery-1.12.4.min.js"></script>
+	<script src="/public/js/index.js"></script>
+	<style>
+		@font-face {
+			font-family: 'iconfont';
+			src: url('/public/fonts/iconfont.woff') format('woff');
+		}
+		.left_bar div{
+			position: absolute;
+			height: 30px;
+			width: 30px;
+			top: 3px;
+			right: -40px;
+		}
+		.left_bar li:nth-child(1) div{
+			background: url(/public/images/recommend.png) no-repeat;
+			background-size: contain;
+		}
+		.left_bar li:nth-child(2) div{
+			background: url(/public/images/fashion.png) no-repeat;
+			background-size: contain;
+		}
+		.left_bar li:nth-child(3) div{
+			background: url(/public/images/beauty.png) no-repeat;
+			background-size: contain;
+		}
+		.left_bar li:nth-child(4) div{
+			background: url(/public/images/food.png) no-repeat;
+			background-size: contain;
+		}
+		.left_bar li:nth-child(5) div{
+			background: url(/public/images/technology.png) no-repeat;
+			background-size: contain;
+		}
+	</style>
+	<title>waht</title>
+</head>
+<body>
+	<!--轮播图区域开始-->
+	<div class="left_bar">
+		<ul>
+			<li>推荐<div></div></li>
+			<li>时尚<div></div></li>
+			<li>美妆<div></div></li>
+			<li>美食<div></div></li>
+			<li>技术<div></div></li>
+			<a href="/register"><li>＋</li></a>
+		</ul>
+	</div>
+	<div class="slide_bg">
+		<div class="top_bar"><!--上部导航条-->
+			<div class="top_bar_m">
+				<a href="/"><div class="top_bar_logo"></div></a>
+				<a href="/"><div class="top_bar_logoWord"></div></a>
+				<div class="search">
+					<a href="/register"><i class="search_pt iconfont">&#xe630;</i></a>
+					<input type="text" class="search_input" name="" id="" placeholder="WEB前端工程师">
+				</div>
+				<div class="top_bar_right">
+					<ul>
+						<a href="/views/author.html"><li>制作人员</li></a>
+						<a href="/views/connect.html"><li>联系我们</li></a>
+						<a href="/views/about.html"><li>关于我们</li></a>
+						<a href="/views/joinin.html"><li>加入我们</li></a>
+						<a href="/register"><li>注册丨登陆</li></a>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="slide">
+			<div class="slide_main">
+				<div class="slide_left_main">
+					<div class="slide_left_main_shadow" style="overflow: hidden">
+						<div class="slide_left_main_pt" name="0"></div>
+						<div class="slide_left_main_pt" name="1"></div>
+						<div class="slide_left_main_pt" name="2"></div>
+						<div class="slide_left_main_pt" name="3"></div>
+						<div class="slide_left_main_pt" name="4"></div>
+					</div>
+				</div>
+				<div class="slide_right_bar">
+					<div class="slide_right_bar_m">
+						<ul>
+							<li name="0">01</li>
+							<li name="1">02</li>
+							<li name="2">03</li>
+							<li name="3">04</li>
+							<li name="4">05</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--轮播图区域结束-->
+	<!--主要推荐内容开始-->
+	<div class="returnTOP"><i class="iconfont" style="display: none;">&#xec0b;</i></div><!--返回头部-->
+	<!--自造滚动条-->
+	<div class="scroll_bar">
+		<div class="scroll_point"></div>
+	</div>
+	<!--自造滚动条结束-->
+	<div class="content">
+		<div class="content_center">
+			<div class="content_box">
+				<div class="content_box_small" index="6">
+					<a>
+						<div class="note_info">
+							<div class="note_info_pt" style="height: 300px;background-image: url(/public/images/note/6.png);">
+								<div class="note_info_pt_on"></div>
+							</div>
+						<div class="note_info_describe_middle">
+							<div class="note_info_describe_small">
+								<p>冰岛🇮🇸 | 一定要去感受一次世界尽头的美❄️ 2016年去asdasdas萨达阿瑟东阿瑟东阿瑟东阿瑟东阿瑟东萨达的</p>
+							</div>
+						</div>
+					</div>
+					</a>
+					<div class="note_user">
+						<div class="note_user_middle">
+							<div class="note_user_small note_user_middle_left">
+								<p><span>by</span><a>waht_root</a></p>
+							</div>
+							<div class="note_user_small note_user_middle_right">
+								<p><span>❤</span>3151</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content_box_small" index="5">
+					<a>
+						<div class="note_info">
+							<div class="note_info_pt" style="height: 300px;background-image: url(/public/images/note/5.jpg);">
+								<div class="note_info_pt_on"></div>
+							</div>
+						<div class="note_info_describe_middle">
+							<div class="note_info_describe_small">
+								<p>冰岛🇮🇸 | 一定要去感受一次世界尽头的美❄️ 2016年去asdasdas萨达阿瑟东阿瑟东阿瑟东阿瑟东阿瑟东萨达的</p>
+							</div>
+						</div>
+					</div>
+					</a>
+					<div class="note_user">
+						<div class="note_user_middle">
+							<div class="note_user_small note_user_middle_left">
+								<p><span>by</span><a>waht_root</a></p>
+							</div>
+							<div class="note_user_small note_user_middle_right">
+								<p><span>❤</span>3151</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content_box">
+				<div class="content_box_small" index="1">
+					<a>
+						<div class="note_info">
+							<div class="note_info_pt" style="height: 300px;background-image: url(/public/images/note/1.jpg);">
+								<div class="note_info_pt_on"></div>
+							</div>
+						<div class="note_info_describe_middle">
+							<div class="note_info_describe_small">
+								<p>冰岛🇮🇸 | 一定要去感受一次世界尽头的美❄️ 2016年去asdasdas萨达阿瑟东阿瑟东阿瑟东阿瑟东阿瑟东萨达的</p>
+							</div>
+						</div>
+					</div>
+					</a>
+					<div class="note_user">
+						<div class="note_user_middle">
+							<div class="note_user_small note_user_middle_left">
+								<p><span>by</span><a>waht_root</a></p>
+							</div>
+							<div class="note_user_small note_user_middle_right">
+								<p><span>❤</span>3151</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content_box_small" index="2">
+					<a>
+						<div class="note_info">
+							<div class="note_info_pt" style="height: 300px;background-image: url(/public/images/note/2.jpg);">
+								<div class="note_info_pt_on"></div>
+							</div>
+						<div class="note_info_describe_middle">
+							<div class="note_info_describe_small">
+								<p>冰岛🇮🇸 | 一定要去感受一次世界尽头的美❄️ 2016年去asdasdas萨达阿瑟东阿瑟东阿瑟东阿瑟东阿瑟东萨达的</p>
+							</div>
+						</div>
+					</div>
+					</a>
+					<div class="note_user">
+						<div class="note_user_middle">
+							<div class="note_user_small note_user_middle_left">
+								<p><span>by</span><a>waht_root</a></p>
+							</div>
+							<div class="note_user_small note_user_middle_right">
+								<p><span>❤</span>3151</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content_box">
+				<div class="content_box_small" index="3">
+					<a>
+						<div class="note_info">
+							<div class="note_info_pt" style="height: 300px;background-image: url(/public/images/note/3.jpg);">
+								<div class="note_info_pt_on"></div>
+							</div>
+						<div class="note_info_describe_middle">
+							<div class="note_info_describe_small">
+								<p>冰岛🇮🇸 | 一定要去感受一次世界尽头的美❄️ 2016年去asdasdas萨达阿瑟东阿瑟东阿瑟东阿瑟东阿瑟东萨达的</p>
+							</div>
+						</div>
+					</div>
+					</a>
+					<div class="note_user">
+						<div class="note_user_middle">
+							<div class="note_user_small note_user_middle_left">
+								<p><span>by</span><a>waht_root</a></p>
+							</div>
+							<div class="note_user_small note_user_middle_right">
+								<p><span>❤</span>3151</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content_box_small" index="4">
+					<a>
+						<div class="note_info">
+							<div class="note_info_pt" style="height: 300px;background-image: url(/public/images/note/4.gif);">
+								<div class="note_info_pt_on"></div>
+							</div>
+						<div class="note_info_describe_middle">
+							<div class="note_info_describe_small">
+								<p>冰岛🇮🇸 | 一定要去感受一次世界尽头的美❄️ 2016年去asdasdas萨达阿瑟东阿瑟东阿瑟东阿瑟东阿瑟东萨达的</p>
+							</div>
+						</div>
+					</div>
+					</a>
+					<div class="note_user">
+						<div class="note_user_middle">
+							<div class="note_user_small note_user_middle_left">
+								<p><span>by</span><a>waht_root</a></p>
+							</div>
+							<div class="note_user_small note_user_middle_right">
+								<p><span>❤</span>3151</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content_box">
+				<div class="content_box_small" index="35">
+					<a>
+						<div class="note_info">
+							<div class="note_info_pt" style="height: 300px;background-image: url(/public/images/note/35.jpg);">
+								<div class="note_info_pt_on"></div>
+							</div>
+						<div class="note_info_describe_middle">
+							<div class="note_info_describe_small">
+								<p>冰岛🇮🇸 | 一定要去感受一次世界尽头的美❄️ 2016年去asdasdas萨达阿瑟东阿瑟东阿瑟东阿瑟东阿瑟东萨达的</p>
+							</div>
+						</div>
+					</div>
+					</a>
+					<div class="note_user">
+						<div class="note_user_middle">
+							<div class="note_user_small note_user_middle_left">
+								<p><span>by</span><a>waht_root</a></p>
+							</div>
+							<div class="note_user_small note_user_middle_right">
+								<p><span>❤</span>3151</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content_box_small" index="39">
+					<a>
+						<div class="note_info">
+							<div class="note_info_pt" style="height: 300px;background-image: url(/public/images/note/39.jpg);">
+								<div class="note_info_pt_on"></div>
+							</div>
+						<div class="note_info_describe_middle">
+							<div class="note_info_describe_small">
+								<p>冰岛🇮🇸 | 一定要去感受一次世界尽头的美❄️ 2016年去asdasdas萨达阿瑟东阿瑟东阿瑟东阿瑟东阿瑟东萨达的</p>
+							</div>
+						</div>
+					</div>
+					</a>
+					<div class="note_user">
+						<div class="note_user_middle">
+							<div class="note_user_small note_user_middle_left">
+								<p><span>by</span><a>waht_root</a></p>
+							</div>
+							<div class="note_user_small note_user_middle_right">
+								<p><span>❤</span>3151</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--主要推荐内容结束-->
+	<!--node详细页面呼出开始-->
+	<div class="hide" style="display: none">
+		<div class="node_out_position">
+			
+		</div>
+	</div>
+	<!--node详细页面呼出开始-->
+	<script id="temp" type="text/x-art-template">
+				<div class="content_box_small" style="opacity:0" index="{{n_Id}}">
+					<a>
+						<div class="note_info">
+							<div class="note_info_pt" style="height: 300px;background-image: url(/public/images/note/{{n_picture}});">
+								<div class="note_info_pt_on"></div>
+							</div>
+						<div class="note_info_describe_middle">
+							<div class="note_info_describe_small">
+								<p>{{n_Title}}</p>
+							</div>
+						</div>
+					</div>
+					</a>
+					<div class="note_user">
+						<div class="note_user_middle">
+							<div class="note_user_small note_user_middle_left">
+								<p><span>by</span><a>{{user_Nickname}}</a></p>
+							</div>
+							<div class="note_user_small note_user_middle_right">
+								<p><span>❤</span>{{n_Like}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+	</script>
+	<script id="tempOutNode" type="text/x-art-template">
+		<div class="node_out_big_box">
+				<div class="node_out_author">
+					<div class="node_out_author_message">
+						<div class="node_out_author_message_base">
+							<img src="/public/images/user_photo_head/{{user_Portrait}}"  class="user_head_portrait" alt="头像">
+							<p class="node_out_author_message_base_name"><a href="/register" >{{user_Nickname}}</a></p>
+							<p class="user_signature">{{user_signature}}</p>
+							<div class="user_introduce">
+								<p><div>UID:</div><span>{{user_Id}}</span></p>
+								<p><div>等级:</div><span>lv{{user_levels}}</span></p>
+								<p><div>称号:</div><span>{{user_title}}</span></p>
+								<p><div>年龄:</div><span>{{user_birth}}</span></p>
+								<p><div>职业:</div><span>{{user_profession}}</span></p>
+								<p><div>星座:</div><span>{{user_constellation}}</span></p>
+								<p><div>所在地:</div><span>{{user_location}}</span></p>
+								<p><div>故乡:</div><span>{{user_hometown}}</span></p>
+								<p><div>爱好:</div><span>{{user_hobby}}</span></p>
+							</div>
+							<div class="decoration_logo"></div>
+						</div>
+					</div>
+				</div>
+				<div class="node_out_main">
+					<div class="node_out_main_title">
+						<p>{{n_Title}}</p>
+						<span>2018.09.15</span>
+					</div>
+					<div class="node_out_main_contain">
+					</div>
+				</div><!--文章主要内容-->
+			</div>
+	</script>
+	<script src="/public/js/template-web.js">
+	</script>
+</body>
+</html>

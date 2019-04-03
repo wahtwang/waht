@@ -1,0 +1,424 @@
+{{extend './base.html'}}
+{{block 'title'}}这里是{{n_Nickname}}的私人空间{{/block}}
+{{block 'head'}}
+<link rel="stylesheet" href="/public/css/personalZoneCss/userdata.css">
+{{/block}}
+{{block 'body'}}
+<div class="scroll_bar"><!--自制滚动条-->
+	<div class="scroll_point"></div>
+</div>
+<div class="returnTOP"><i class="iconfont" style="display: none;">&#xec0b;</i></div><!--返回头部-->
+<div class="user_background content">
+	<div class="container">
+		<div class="user_background_box box" style="background: url(/public/images/user_background/{{user.user_background}}) no-repeat center center">
+			<div class="user_backgroun_head_box">
+				<img src="/public/images/user_photo_head/{{user.user_Portrait}}" alt="头像">
+				<p>{{user.user_Nickname}}</p>
+				<p class="signature">{{user.user_signature}}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="bar content">
+	<div class="container">
+		<div class="box">
+			<ul>
+				<a href="/mb"><li>我的主页</li></a>
+				<a href="/ud"><li>个人资料</li></a>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="main content">
+	<div class="container">
+		<div class="main_left">
+			<div class="box left_bar1">
+				
+			</div>
+		</div>
+		<div class="main_rignt">
+			<div class="box user_data">
+				<div class="base_main user_data_bbox">
+					<div class="base_view user_data_box">
+						<div class="box_title">
+							<p>基本信息</p>
+						</div>
+						<div class="detail_main">
+						<div class="main_user_Name main_mbox">
+							<div class="main_key">登录名:</div>
+							<div class="main_val">{{user.user_Name}} <a href="/changePwd">修改密码</a></div>
+						</div>
+						<div class="main_user_Nickname main_mbox">
+							<div class="main_key">昵  称:</div>
+							<div class="main_val">{{user.user_Nickname}}</div>
+						</div>
+						<div class="main_user_realname main_mbox">
+							<div class="main_key">真实姓名:</div>
+							<div class="main_val">{{user.user_realname}}</div>
+						</div>
+						<div class="main_user_location main_mbox">
+							<div class="main_key">所在地:</div>
+							<div class="main_val">{{user.user_location}}</div>
+						</div>
+						<div class="main_user_hometown main_mbox">
+							<div class="main_key">家  乡:</div>
+							<div class="main_val">{{user.user_hometown}}</div>
+						</div>
+						<div class="main_user_sex main_mbox">
+							<div class="main_key">性  别:</div>
+							<div class="main_val">{{user.user_sex}}</div>
+						</div>
+						<div class="main_user_orientation main_mbox">
+							<div class="main_key">性取向:</div>
+							<div class="main_val">{{user.user_orientation}}</div>
+						</div>
+						<div class="main_user_signature main_mbox">
+							<div class="main_key">个人签名:</div>
+							<div class="main_val">{{user.user_signature}}</div>
+						</div>
+						<div class="main_user_birth main_mbox">
+							<div class="main_key">生  日:</div>
+							<div class="main_val">{{user.user_birth}}</div>
+						</div>
+						<div class="main_user_signtime main_mbox">
+							<div class="main_key">注册时间:</div>
+							<div class="main_val">{{user.user_signtime}}</div>
+						</div>
+						<div class="main_user_hobby main_mbox">
+							<div class="main_key">爱  好:</div>
+							<div class="main_val">{{user.user_hobby}}</div>
+						</div>
+						<div class="main_user_levels main_mbox">
+							<div class="main_key">博客等级:</div>
+							<div class="main_val">levels {{user.user_levels}}</div>
+						</div>
+						<div class="base_view_button user_data_button view_button">修改</div>
+					</div>
+					</div>
+					<div class="base_change user_data_box">
+						<div class="box_title">
+						<p>基本信息</p>
+					</div>
+						<div class="detail_main">
+						<div class="main_user_Name main_mbox">
+							<div class="main_key">登录名:</div>
+							<div class="main_val_">{{user.user_Name}}</div>
+						</div>
+						<div class="main_user_Nickname main_mbox">
+							<div class="main_key">昵  称:</div>
+							<input type="text" class="text" value="{{user.user_Nickname}}">
+						</div>
+						<div class="main_user_realname main_mbox">
+							<div class="main_key">真实姓名:</div>
+							<input type="text" class="text" value="{{user.user_realname}}">
+						</div>
+						<div class="main_user_location main_mbox">
+							<div class="main_key">所在地:</div>
+							<input type="text" class="text" value="{{user.user_location}}">
+						</div>
+						<div class="main_user_hometown main_mbox">
+							<div class="main_key">家  乡:</div>
+							<input type="text" class="text" value="{{user.user_hometown}}">
+						</div>
+						<div class="main_user_sex main_mbox">
+							<div class="main_key">性  别:</div>
+							<input type="radio" id="man" name="sex" class="radio" value="男" checked>男
+							<input type="radio" name="sex" id="woman" class="radio" value="女">女
+						</div>
+						<div class="main_user_orientation main_mbox">
+							<div class="main_key">性取向:</div>
+							<input type="text" class="text" value="{{user.user_orientation}}">
+						</div>
+						<div class="main_user_signature main_mbox">
+							<div class="main_key">个人签名:</div>
+							<input type="text" class="text" value="{{user.user_signature}}">
+						</div>
+						<div class="main_user_birth main_mbox">
+							<div class="main_key">生  日:</div>
+							<input type="date" class="text date" value="{{user.user_birth}}" style="width: 200px;height: 16px;">
+						</div>
+						<div class="main_user_signtime main_mbox">
+							<div class="main_key">注册时间:</div>
+							<div class="main_val">{{user.user_signtime}}</div>
+						</div>
+						<div class="main_user_hobby main_mbox">
+							<div class="main_key">爱  好:</div>
+							<input type="text" class="text" value="{{user.user_hobby}}">
+						</div>
+						<div class="main_user_levels main_mbox">
+							<div class="main_key">博客等级:</div>
+							<div class="main_val">levels {{user.user_levels}}</div>
+						</div>
+						<div class="base_change_button user_data_button change_button">保存</div>
+					</div>
+					</div>
+				</div>
+				<div class="connect_main user_data_bbox">
+					<div class="connect_view user_data_box">
+						<div class="box_title">
+						<p>联系信息</p>
+					</div>
+						<div class="detail_main">
+							<div class="main_user_Email main_mbox">
+								<div class="main_key">邮  箱:</div>
+								<div class="main_val">{{user.user_Email}}</div>
+							</div>
+							<div class="main_user_QQ main_mbox">
+								<div class="main_key">Q  Q:</div>
+								<div class="main_val">{{user.user_QQ}}</div>
+							</div>
+							<div class="main_user_phonenumber main_mbox">
+								<div class="main_key">手机号码:</div>
+								<div class="main_val">{{user.user_phonenumber}}</div>
+							</div>
+							<div class="connect_view_button user_data_button view_button">修改</div>
+						</div>
+					</div>
+					<div class="connect_change user_data_box">
+						<div class="box_title">
+						<p>联系信息</p>
+					</div>
+						<div class="detail_main">
+							<div class="main_user_Email main_mbox">
+								<div class="main_key">邮  箱:</div>
+								<input type="text" class="text" value="{{user.user_Email}}">
+							</div>
+							<div class="main_user_QQ main_mbox">
+								<div class="main_key">Q  Q:</div>
+								<input type="number" class="text" value="{{user.user_QQ}}">
+							</div>
+							<div class="main_user_phonenumber main_mbox">
+								<div class="main_key">手机号码:</div>
+								<input type="number" class="text" value="{{user.user_phonenumber}}">
+							</div>
+							<div class="connect_change_button user_data_button change_button">保存</div>
+						</div>
+					</div>
+				</div>
+				<div class="job_main user_data_bbox">
+					<div class="job_view user_data_box">
+						<div class="box_title">
+							<p>职业信息</p>
+						</div>
+						<div class="detail_main">
+							<div class="main_user_profession main_mbox">
+								<div class="main_key">职  位:</div>
+								<div class="main_val">{{user.user_profession}}</div>
+							</div>
+							<div class="job_view_button user_data_button view_button">修改</div>
+						</div>
+					</div>
+					<div class="job_change user_data_box">
+						<div class="box_title">
+							<p>职业信息</p>
+						</div>
+						<div class="detail_main">
+							<div class="main_user_profession main_mbox">
+								<div class="main_key">职  位:</div>
+								<input type="text" class="text" value="{{user.user_profession}}">
+							</div>
+							<div class="job_change_button user_data_button change_button">保存</div>
+						</div>
+					</div>
+				</div>
+				<div class="education_main user_data_bbox">
+					<div class="education_view user_data_box">
+						<div class="box_title">
+							<p>教育信息</p>
+						</div>
+						<div class="detail_main">
+							<div class="main_user_education main_mbox">
+								<div class="main_key">学  历:</div>
+								<div class="main_val">{{user.user_education}}</div>
+							</div>
+							<div class="main_user_school main_mbox">
+								<div class="main_key">学  校:</div>
+								<div class="main_val">{{user.user_school}}</div>
+							</div>
+							<div class="education_view_button user_data_button view_button">修改</div>
+						</div>
+					</div>
+					<div class="education_change user_data_box">
+						<div class="box_title">
+							<p>教育信息</p>
+						</div>
+						<div class="detail_main">
+							<div class="main_user_education main_mbox">
+								<div class="main_key">学  历:</div>
+								<input type="text" class="text" value="{{user.user_education}}">
+							</div>
+							<div class="main_user_school main_mbox">
+								<div class="main_key">学  校:</div>
+								<input type="text" class="text" value="{{user.user_school}}">
+							</div>
+							<div class="education_change_button user_data_button change_button">保存</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{/block}}
+{{block 'script'}}
+<script>
+	;(function () {
+		var keepScroll = 0
+		var $scrollBar=$(".scroll_bar")
+		var $scrollPoint= $(".scroll_point")
+		var barTop
+		var $html = $("html")
+		$scrollBar.get(0).onselectstart = function(){return false}
+		$(window).scroll(function(){
+			dHeight = $(document).height()
+			$scrollPoint.css("top",window.pageYOffset/(dHeight-$(window).height())*400)
+		})
+		var getMousePosition = function (e) {
+			var mouseY = e.clientY
+			return mouseY
+		}
+		var changePointPosition = function (mouseY,barTop) {
+			var mouseRTop = mouseY-barTop
+			if(mouseRTop>=15&&mouseRTop<=415){
+				$scrollPoint.css("top",mouseRTop-15)//pointTop
+				return mouseRTop-15
+			}
+			else if (mouseRTop<15) {
+				$scrollPoint.css("top",0)
+				return 0
+			}
+			else{
+				$scrollPoint.css("top",400)
+				return 400
+			}
+		}
+		$scrollBar.on("mousedown",function (e) {
+			var mouseY = getMousePosition(e)
+			barTop = parseInt($scrollBar.css("top"))
+			var pointTop = changePointPosition(mouseY,barTop)
+			keepScroll = 1
+			$html.scrollTop((dHeight-$(window).height())/400*pointTop)
+		})
+		$html.on("mousemove",function (e) {
+			if(keepScroll===1){
+				var mouseY = getMousePosition(e)
+				var pointTop = changePointPosition(mouseY,barTop)
+				$html.scrollTop((dHeight-$(window).height())/400*pointTop)
+			}
+		})
+		$html.on("mouseup",function () {
+			keepScroll = 0
+		})
+	})()
+	//返回顶部
+	;(function (){
+		var $returnTop = $(".returnTOP i")
+	$(window).scroll(function(){
+		if($(this).scrollTop()>300){
+		$returnTop.show()
+	}
+		else{
+		$returnTop.hide()
+	}
+	})
+	$returnTop.click(function(){
+		$("html").animate({scrollTop:0})
+	})
+	function toWhite(){
+		$returnTop.stop().animate({opacity:1},1500,"linear",function(){toBlue()})
+	}
+	function toBlue(){
+		$returnTop.stop().animate({opacity:0},1500,"linear",function(){toWhite()})
+	}
+	toWhite()
+	})()
+	//表单初始化
+	;(function () {
+		if ('{{user.user_sex}}'==='男'){
+			$('#man').attr('checked','checked')
+		} else {
+			$('#woman').attr('checked','checked')
+		}
+		var signtime = new Date('{{user.user_signtime}}')
+		$('.main_user_signtime .main_val').text(signtime.getFullYear()+'-'+(signtime.getMonth()+1)+'-'+signtime.getDate())
+		$('.view_button').on('click',function () {
+			$(this).parents('.user_data_box').slideUp(200,'linear').siblings().slideDown(200,'linear')
+		})
+		$('.base_change_button').on('click',function () {
+			var sex = $('.base_change .main_user_sex .radio').filter(':checked').val()
+			var changeData = {
+				user_Nickname: $('.base_change .main_user_Nickname .text').val(),
+				user_realname: $('.base_change .main_user_realname .text').val(),
+				user_location: $('.base_change .main_user_location .text').val(),
+				user_hometown: $('.base_change .main_user_hometown .text').val(),
+				user_sex: sex,
+				user_orientation: $('.base_change .main_user_orientation .text').val(),
+				user_signature: $('.base_change .main_user_signature .text').val(),
+				user_birth: $('.base_change .main_user_birth .text').val(),
+				user_hobby: $('.base_change .main_user_hobby .text').val()
+			}
+			var $this = $(this)
+			$.post('/changebase',changeData,function (res) {
+				$('.base_view .main_user_Nickname .main_val').text(changeData.user_Nickname)
+				$('.base_view .main_user_realname .main_val').text(changeData.user_realname )
+				$('.base_view .main_user_location .main_val').text(changeData.user_location )
+				$('.base_view .main_user_hometown .main_val').text(changeData.user_hometown )
+				$('.base_view .main_user_sex .main_val').text(changeData.user_sex )
+				$('.base_view .main_user_orientation .main_val').text(changeData.user_orientation )
+				$('.base_view .main_user_signature .main_val').text(changeData.user_signature )
+				$('.base_view .main_user_birth .main_val').text(changeData.user_birth )
+				$('.base_view .main_user_hobby .main_val').text(changeData.user_hobby )
+				alert('保存成功')
+				$this.parents('.user_data_box').slideUp(200,'linear').siblings().slideDown(200,'linear')
+			})
+		})
+		$('.job_change_button').on('click',function () {
+			var changeData = {
+				user_profession: $('.job_change .main_user_profession .text').val(),
+			}
+			var $this = $(this)
+			$.post('/changejob',changeData,function (res) {
+				$('.job_view .main_user_profession .main_val').text(changeData.user_profession)
+				alert('保存成功')
+				$this.parents('.user_data_box').slideUp(200,'linear').siblings().slideDown(200,'linear')
+			})
+		})
+		$('.connect_change_button').on('click',function () {
+			var changeData = {
+				user_QQ: $('.connect_change .main_user_QQ .text').val(),
+				user_Email: $('.connect_change .main_user_Email .text').val(),
+				user_phonenumber: $('.connect_change .main_user_phonenumber .text').val()
+			}
+			var $this = $(this)
+			$.post('/changeconnect',changeData,function (res) {
+				$('.connect_view .main_user_QQ .main_val').text(changeData.user_QQ)
+				$('.connect_view .main_user_Email .main_val').text(changeData.user_Email)
+				$('.connect_view .main_user_phonenumber .main_val').text(changeData.user_phonenumber)
+				alert('保存成功')
+				$this.parents('.user_data_box').slideUp(200,'linear').siblings().slideDown(200,'linear')
+			})
+		})
+		$('.education_change_button').on('click',function () {
+			var changeData = {
+				user_education: $('.education_change .main_user_education .text').val(),
+				user_school: $('.education_change .main_user_school .text').val(),
+			}
+			var $this = $(this)
+			$.post('/changeeducation',changeData,function (res) {
+				$('.education_view .main_user_education .main_val').text(changeData.user_education)
+				$('.education_view .main_user_school .main_val').text(changeData.user_school)
+				alert('保存成功')
+				$this.parents('.user_data_box').slideUp(200,'linear').siblings().slideDown(200,'linear')
+			})
+		})
+	})()
+</script>
+{{/block}}
+
+
+
+
+
+
+

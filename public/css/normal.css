@@ -1,0 +1,16 @@
+/* CSS Document */
+body,div,a,p,ul,li,img,input{
+	padding: 0;
+	margin: 0;
+}
+html,body{
+	height: 100%;
+	font: normal 12px "microsoft yahei";
+	color: #555555;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}

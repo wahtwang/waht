@@ -1,0 +1,62 @@
+.toolbar {
+	width: 1290px;
+	margin: auto;
+        }
+.main{
+	width: 1260px;
+	margin: auto;
+}
+.text {
+	border: 1px solid #ddd;
+	height: 570px;
+	background-color: #eeeeee;
+	}
+.top_bar{
+	box-shadow:0 0 0 0 black;
+}
+.title_box{
+	height: 40px;
+	padding: 30px 0;
+}
+.title{
+	float: left;
+	height: inherit;
+	border: 1px solid #ddd;
+	background-color: #eeeeee;
+	font-size: 25px;
+	padding: 0 10px;
+	width: 1125px;
+	font-weight: 600;
+	color: #444;
+	letter-spacing: 2px;
+}
+#submit{
+	float: right;
+	height: 42px;
+	width: 80px;
+	background-color: #50aaff;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 42px;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+#submit:hover{
+	background-color: #4090ff;
+}
+#submit:active{
+	background-color: #2683ff; 
+}
+.ontools{
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #eee;
+	opacity: 0.4;
+	z-index: 1000000000;
+}
